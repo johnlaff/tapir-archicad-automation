@@ -33,6 +33,7 @@
 #include "RevisionCommands.hpp"
 #include "NotificationCommands.hpp"
 #include "DesignOptionCommands.hpp"
+#include "CreateLinearDimensionCommand.hpp"
 
 template <typename CommandType>
 GSErrCode RegisterCommand (CommandGroup& group, const GS::UniString& version, const GS::UniString& description)
@@ -317,6 +318,10 @@ GSErrCode Initialize (void)
         err |= RegisterCommand<CreateLabelsCommand> (
             elementCommands, "1.2.5",
             "Creates Label elements based on the given parameters."
+        );
+        err |= RegisterCommand<CreateLinearDimensionCommand> (
+            elementCommands, "1.3.3",
+            "Creates a linear dimension element on the floor plan."
         );
         err |= RegisterCommand<GetElementPreviewImageCommand> (
             elementCommands, "1.2.7",
